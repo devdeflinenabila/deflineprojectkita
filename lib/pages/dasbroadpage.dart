@@ -1,4 +1,3 @@
-import 'package:deflineproject/pages/pencarianpage.dart';
 import 'package:deflineproject/pages/profilpage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +15,8 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Map<int, List<dynamic>> agusSad = {
     0: [Homepage(), "Home", Icons.home],
-    1: [Pencarianpage(), "Pencarian", Icons.search_rounded],
-    2: [Profilpage(), "Profile", Icons.person],
+    1: [Homepage(), "Pencarian", Icons.search_rounded],
+    2: [Homepage(), "Profile", Icons.person],
 
   };
 
@@ -82,6 +81,7 @@ class _DashboardPageState extends State<DashboardPage> {
               colors: [Colors.white, Colors.blueAccent, Colors.purple],
             ),
           ),
+
         ),
         actions: [
           IconButton(
@@ -91,12 +91,12 @@ class _DashboardPageState extends State<DashboardPage> {
                 MaterialPageRoute(builder: (context) => Profilpage()),
               );
             },
-            icon:  Icon(Icons.person, color: Colors.white),
+            icon: Icon(Icons.settings, color: Colors.white),
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor: Colors.purple,
         elevation: 5,
         currentIndex: sadIndex,
         onTap: (value) {
@@ -109,9 +109,9 @@ class _DashboardPageState extends State<DashboardPage> {
             backgroundColor: Colors.blueAccent,
             icon: Icon(s.value[2], color: Colors.white, size: 32),
             label: s.value[1],
-            activeIcon: Icon(s.value[2], size: 48, color: Colors.grey),
+            activeIcon: Icon(s.value[2], size: 38, color: Colors.grey),
           );
-        }).toList(),
+         }).toList(),
       ),
       body: agusSad[sadIndex]![0],
     );

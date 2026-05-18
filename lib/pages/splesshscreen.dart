@@ -17,12 +17,13 @@ class _SplesshscreenState extends State<Splesshscreen> {
     super.initState();
     t = Timer(
       Duration(seconds: 4),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Login()),
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -37,15 +38,31 @@ class _SplesshscreenState extends State<Splesshscreen> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Image.asset(
-              "asset/image/logodefline.png",
-              width: size.width * 0.6,
-              fit: BoxFit.contain,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Image.asset(
+                  "asset/image/logodefline.png",
+                  width: size.width * 0.4,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                "DEFLINE",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
