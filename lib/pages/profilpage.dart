@@ -12,7 +12,7 @@ class _ProfilpageState extends State<Profilpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("profil"),
+        title: Text("akunnya"),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -36,7 +36,7 @@ class _ProfilpageState extends State<Profilpage> {
               ),
             ),
             Text(
-              "you kisah is your images",
+              "itu gak anjay images",
               style: TextStyle(color: Colors.black, fontSize: 12),
             ),
           ],
