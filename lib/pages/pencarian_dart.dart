@@ -23,7 +23,7 @@ class PencarianPage extends StatelessWidget {
                   Text(
                     'PENCARIAN',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
