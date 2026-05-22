@@ -1,92 +1,91 @@
-import 'package:deflineproject/pages/pencarian_dart.dart';
-import 'package:deflineproject/pages/profilpage.dart';
 import 'package:flutter/material.dart';
-import 'homepage.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
-
-  @override
-  State<DashboardPage> createState() => _DashboardPageState();
-}
-
-class _DashboardPageState extends State<DashboardPage> {
-  int sadIndex = 0;
-  final List<Widget> _pages = [Homepage(), Profilpage()];
+class PencarianPage extends StatelessWidget {
+  const PencarianPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Expanded(
-          child: GestureDetector(
-            onTap: () => setState(() => sadIndex = 1),
-            child: Container(
-              height: 50,
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(25),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding:  EdgeInsets.only(
+                top: 60,
+                bottom: 20,
+                left: 20,
+                right: 20,
               ),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(
-                    onPressed: () => setState(() => sadIndex = 1),
-                    icon: Icon(Icons.search_rounded),
+                  Text(
+                    'PENCARIAN',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 45,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        children: [Icon(Icons.search, color: Colors.black)],
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-          ),
-        ),
-
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.white, Colors.blueAccent, Colors.purple],
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profilpage()),
-              );
-            },
-            icon: Icon(Icons.settings, color: Colors.white),
-          ),
-        ],
-      ),
-      body: _pages[sadIndex],
-
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 10),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.cyan, Colors.purple, Colors.pink],
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => setState(() => sadIndex = 0),
-              child: Icon(
-                Icons.home,
-                color: sadIndex == 0 ? Colors.white : Colors.black,
-              ),
-            ),
-
-            GestureDetector(
-              onTap: () => setState(() => sadIndex = 2),
-              child: Icon(
-                Icons.person,
-                color: sadIndex == 2 ? Colors.white : Colors.black,
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 220,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Container(
+                            height: 220,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Container(
+                        height: 456,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
