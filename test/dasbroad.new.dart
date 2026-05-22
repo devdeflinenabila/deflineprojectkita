@@ -74,7 +74,6 @@ class _DasbroadnewState extends State<Dasbroadnew> {
       ),
       appBar: AppBar(
         elevation: 0,
-        // Properti ini membuat tinggi AppBar pas dengan kolom pencarian Windows 11
         toolbarHeight: 70,
         flexibleSpace: Container(
           decoration: const BoxDecoration(

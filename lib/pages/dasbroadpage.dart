@@ -1,6 +1,6 @@
+import 'package:deflineproject/pages/pencarian_dart.dart';
 import 'package:deflineproject/pages/profilpage.dart';
 import 'package:flutter/material.dart';
-
 import 'homepage.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -12,13 +12,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int sadIndex = 0;
-
-  Map<int, List<dynamic>> agusSad = {
-    0: [Homepage(), "Home", Icons.home],
-    1: [Homepage(), "Pencarian", Icons.search_rounded],
-    2: [Homepage(), "Profile", Icons.person],
-
-  };
+  final List<Widget> _pages = [Homepage(), PencarianDart(), Profilpage()];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,7 @@ class _DashboardPageState extends State<DashboardPage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.blueAccent, Colors.purple],
@@ -55,12 +49,12 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             ListTile(
               leading: Icon(Icons.comment),
-              title:  Text('USER AGREEMENT'),
+              title: Text('USER AGREEMENT'),
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
               leading: Icon(Icons.policy),
-              title:  Text('PRIVACY POLICE'),
+              title: Text('PRIVACY POLICY'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -73,15 +67,16 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('DEFLINE', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
+        title: Text(
+          'DEFLINE',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         flexibleSpace: Container(
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.white, Colors.blueAccent, Colors.purple],
             ),
           ),
-
         ),
         actions: [
           IconButton(
@@ -95,25 +90,60 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.purple,
-        elevation: 5,
-        currentIndex: sadIndex,
-        onTap: (value) {
-          setState(() {
-            sadIndex = value;
-          });
-        },
-        items: agusSad.entries.map((s) {
-          return BottomNavigationBarItem(
-            backgroundColor: Colors.blueAccent,
-            icon: Icon(s.value[2], color: Colors.white, size: 32),
-            label: s.value[1],
-            activeIcon: Icon(s.value[2], size: 38, color: Colors.grey),
-          );
-         }).toList(),
+      body: _pages[sadIndex],
+
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 10),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.cyan, Colors.purple, Colors.pink],
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () => setState(() => sadIndex = 0),
+              child: Icon(
+                Icons.home,
+                color: sadIndex == 0 ? Colors.white : Colors.black,
+              ),
+            ),
+            Expanded(
+              child: GestureDetector(
+                onTap: () => setState(() => sadIndex = 1),
+                child: Container(
+                  height: 50,
+                  margin: EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => setState(() => sadIndex = 1),
+                        icon: Icon(Icons.search_rounded),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            GestureDetector(
+              onTap: () => setState(() => sadIndex = 2),
+              child: Icon(
+                Icons.person,
+                color: sadIndex == 2 ? Colors.white : Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
-      body: agusSad[sadIndex]![0],
     );
   }
 }
