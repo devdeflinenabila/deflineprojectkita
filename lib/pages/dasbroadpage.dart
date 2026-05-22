@@ -12,7 +12,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int sadIndex = 0;
-  final List<Widget> _pages = [Homepage(), PencarianDart(), Profilpage()];
+  final List<Widget> _pages = [Homepage(), PencarianPage(), Profilpage()];
 
   @override
   Widget build(BuildContext context) {
