@@ -6,5 +6,6 @@ class SettingModel {
 
   SettingModel({
     required this.title,
-    required this.icon});
+    required this.icon,
+    });
 }

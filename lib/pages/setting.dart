@@ -48,7 +48,7 @@ class _InboxpageState extends State<Inboxpage> {
                 });
               },
               child: ListTile(
-                leading: Icon(Icons.notifications, color: Colors.white),
+                leading: Icon(Icons.account_balance, color: Colors.white),
                 title: Text(par[code].title),
                 trailing: Icon(par[code].icon),
               ),
