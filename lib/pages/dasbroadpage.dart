@@ -1,11 +1,13 @@
 import 'package:deflineproject/pages/login.dart';
+import 'package:deflineproject/pages/manambahkoten.dart';
 import 'package:deflineproject/pages/pencarian_dart.dart';
 import 'package:deflineproject/pages/profilpage.dart';
+import 'package:deflineproject/pages/reealsline.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 
 class DashboardPage extends StatefulWidget {
-  DashboardPage({super.key});
+  const DashboardPage({super.key});
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
@@ -13,7 +15,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int sadIndex = 0;
-  final List<Widget> pages = [Homepage(), PencarianPage(), Profilpage()];
+  final List<Widget> pages = [Homepage(), PencarianPage(), Profilpage(), ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,10 @@ class _DashboardPageState extends State<DashboardPage> {
               leading: Icon(Icons.logout, color: Colors.red),
               title: Text(
                 'LOGOUT',
-                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -87,7 +92,10 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Login()),
+                            );
                           },
                           child: Text("OK"),
                         ),
@@ -125,6 +133,18 @@ class _DashboardPageState extends State<DashboardPage> {
         ],
       ),
       body: pages[sadIndex],
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Reealsline(),));
+          },child: Icon(Icons.video_library_sharp),),
+          SizedBox(height: 12,),
+          FloatingActionButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Manambahkoten(),));
+          },child: Icon(Icons.add),),
+        ],
+      ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 10),
         decoration: BoxDecoration(
